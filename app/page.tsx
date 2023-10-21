@@ -1,20 +1,11 @@
 'use client';
-import { ChakraProvider } from '@chakra-ui/react';
-import { extendTheme } from '@chakra-ui/react';
-const colors = {
-  brand: {
-    900: '#1a365d',
-    800: '#153e75',
-    700: '#2a69ac',
-  },
-};
-export const theme = extendTheme({ colors });
+import { Box, Container } from '@chakra-ui/react';
+import Todos from './todos/todos.page';
+
 export default function Home() {
   return (
-    <ChakraProvider theme={theme}>
-      <div>
-        <h1>hello world</h1>
-      </div>
-    </ChakraProvider>
+    <Container maxW={'4xl'}>
+      <Todos />
+    </Container>
   );
 }
