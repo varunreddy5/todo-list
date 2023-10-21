@@ -1,8 +1,10 @@
 interface InitialStateProps {
   todos: Array<any>;
+  completed: Array<any>;
 }
 export const initialState: InitialStateProps = {
   todos: [],
+  completed: [],
 };
 export function todosReducer(state: any, action: any) {
   console.log(action);
@@ -27,6 +29,11 @@ export function todosReducer(state: any, action: any) {
           }
           return todo;
         }),
+      };
+    case 'COMPLETED_TODO':
+      return {
+        ...state,
+        completed: [...state.completed, { id: action.id, name: action.name }],
       };
     case 'DELETE_TODO':
       return {
