@@ -1,12 +1,12 @@
 import { CheckIcon, CloseIcon, EditIcon } from '@chakra-ui/icons';
-import { Box, Checkbox, Flex, Icon, Input, Text } from '@chakra-ui/react';
-import { useState } from 'react';
+import { Box, Flex, Input } from '@chakra-ui/react';
+import { ChangeEvent, useState } from 'react';
 import TodoButton from '../components/button';
+import { TodoItemProps } from '../types';
 
-export default function TodoItem(props: any) {
-  const { todo, dispatch } = props;
-  const [text, setText] = useState(todo.name);
-  const [edit, setEdit] = useState(false);
+export default function TodoItem({ todo, dispatch }: TodoItemProps) {
+  const [text, setText] = useState<string>(todo.name);
+  const [edit, setEdit] = useState<boolean>(false);
 
   return (
     <Flex alignItems={'center'} justifyContent={'space-between'} mt={2} px={3}>
@@ -15,7 +15,9 @@ export default function TodoItem(props: any) {
           value={text}
           width={'50%'}
           size="sm"
-          onChange={(e: any) => setText(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            setText(e.target.value)
+          }
         />
       ) : (
         <Box py={3} fontSize={13}>
